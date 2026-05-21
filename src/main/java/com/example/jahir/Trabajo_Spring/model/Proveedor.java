@@ -19,7 +19,7 @@ public class Proveedor {
 
     @ManyToOne
     @JoinColumn(name = "bodegero_id", nullable = false)
-    private Long bodegueroId;
+    private Bodeguero bodegueroId;
 
     @JoinColumn(nullable = false)
     private String ubicacion;
