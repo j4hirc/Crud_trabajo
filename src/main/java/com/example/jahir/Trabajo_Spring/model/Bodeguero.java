@@ -15,13 +15,13 @@ public class Bodeguero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String apellido;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Boolean estado;
 
 

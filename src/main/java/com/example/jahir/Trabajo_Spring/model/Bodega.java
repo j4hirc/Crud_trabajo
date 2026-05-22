@@ -13,25 +13,25 @@ public class Bodega {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String ruc;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String nombreComercial;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String representanteLegal;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Integer credito;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private String  direccion;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Integer telefono;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Boolean estado;
 
 
