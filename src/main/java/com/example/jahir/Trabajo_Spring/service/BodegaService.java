@@ -13,7 +13,7 @@ public interface BodegaService {
 
     BodegaResponse createBodega(BodegaRequest bodegaRequest);
 
-    BodegaResponse updateResponse(Long id, BodegaRequest bodegaRequest);
+    BodegaResponse updateBodega(Long id, BodegaRequest bodegaRequest);
 
     void deleteById(Long id);
 

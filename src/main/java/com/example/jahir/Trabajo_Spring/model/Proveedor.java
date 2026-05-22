@@ -17,9 +17,9 @@ public class Proveedor {
 
     private String nombre;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bodegero_id", nullable = false)
-    private Bodeguero bodegueroId;
+    private Bodeguero bodeguero;
 
     @JoinColumn(nullable = false)
     private String ubicacion;

@@ -42,7 +42,7 @@ public class BodegaServiceImpl implements BodegaService {
     }
 
     @Override
-    public BodegaResponse updateResponse(Long id, BodegaRequest bodegaRequest) {
+    public BodegaResponse updateBodega(Long id, BodegaRequest bodegaRequest) {
         Bodega bodega = repositoryBodega.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("No existe esa bodega"));
         bodega.setRuc(bodegaRequest.getRuc());
@@ -53,7 +53,9 @@ public class BodegaServiceImpl implements BodegaService {
         bodega.setTelefono(bodegaRequest.getTelefono());
         bodega.setEstado(bodegaRequest.getEstado());
 
-        return bodegaMapper.toResponse(bodega);
+        Bodega bodegaSaved = repositoryBodega.save(bodega);
+
+        return bodegaMapper.toResponse(bodegaSaved);
     }
 
     @Override
