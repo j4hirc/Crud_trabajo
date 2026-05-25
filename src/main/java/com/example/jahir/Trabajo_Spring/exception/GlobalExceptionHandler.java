@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("timestamp", LocalDateTime.now());
-        errorResponse.put("status", HttpStatus.CONFLICT.value()); // 409 Conflict
+        errorResponse.put("status", HttpStatus.CONFLICT.value());
         errorResponse.put("error", "Database Conflict");
         errorResponse.put("message", "Data integrity violation. Posible dato duplicado o violación de llave foránea.");
 

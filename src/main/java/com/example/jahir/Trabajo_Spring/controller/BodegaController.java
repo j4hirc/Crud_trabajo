@@ -40,8 +40,8 @@ public class BodegaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBodega(@PathVariable Long id) {
+    public ResponseEntity<?> deleteBodega(@PathVariable Long id) {
         bodegaService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Eliminado Correctamente");
     }
 }
