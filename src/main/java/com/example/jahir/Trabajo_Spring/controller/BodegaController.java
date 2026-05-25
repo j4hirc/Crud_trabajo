@@ -3,6 +3,7 @@ package com.example.jahir.Trabajo_Spring.controller;
 import com.example.jahir.Trabajo_Spring.dto.request.BodegaRequest;
 import com.example.jahir.Trabajo_Spring.dto.response.BodegaResponse;
 import com.example.jahir.Trabajo_Spring.service.BodegaService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,40 +12,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/bodegas")
 @RequiredArgsConstructor
-@RequestMapping("/api/bodega")
 public class BodegaController {
 
-    private BodegaService bodegaService;
+    private final BodegaService bodegaService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<BodegaResponse>> findAll(){
-        List<BodegaResponse> bodegaResponses = bodegaService.findAll();
-        return ResponseEntity.ok(bodegaResponses);
+    @GetMapping
+    public ResponseEntity<List<BodegaResponse>> getAllBodegas() {
+        return ResponseEntity.ok(bodegaService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BodegaResponse> findById(@PathVariable Long id){
-        BodegaResponse bodegaResponse = bodegaService.findById(id);
-        return ResponseEntity.ok(bodegaResponse);
+    public ResponseEntity<BodegaResponse> getBodegaById(@PathVariable Long id) {
+        return ResponseEntity.ok(bodegaService.findById(id));
     }
 
-    @PostMapping("/create-bodega")
-    public ResponseEntity<BodegaResponse> createBodega(@RequestBody BodegaRequest bodegaRequest){
-        BodegaResponse bodegaResponse = bodegaService.createBodega(bodegaRequest);
-        return new ResponseEntity<>(bodegaResponse, HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<BodegaResponse> createBodega(@Valid @RequestBody BodegaRequest request) {
+        BodegaResponse nuevaBodega = bodegaService.createBodega(request);
+        return new ResponseEntity<>(nuevaBodega, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-bodega/{id}")
-    public ResponseEntity<BodegaResponse> updateBodega(@PathVariable Long id, @RequestBody BodegaRequest bodegaRequest){
-        BodegaResponse bodegaResponse = bodegaService.updateBodega(id,bodegaRequest);
-        return ResponseEntity.ok(bodegaResponse);
+    @PutMapping("/{id}")
+    public ResponseEntity<BodegaResponse> updateBodega(@PathVariable Long id, @Valid @RequestBody BodegaRequest request) {
+        return ResponseEntity.ok(bodegaService.updateBodega(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBodega(@PathVariable Long id) {
         bodegaService.deleteById(id);
-        return ResponseEntity.ok("Eliminado con exito");
+        return ResponseEntity.noContent().build();
     }
-
 }

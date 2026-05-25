@@ -29,7 +29,7 @@ public class Bodega {
     private String  direccion;
 
     @Column(nullable = false)
-    private Integer telefono;
+    private String telefono;
 
     @Column(nullable = false)
     private Boolean estado;
